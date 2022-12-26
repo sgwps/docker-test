@@ -1,20 +1,22 @@
+# pull image from jupyterhub
 FROM jupyterhub/jupyterhub
 
-
-#WORKDIR $HUB_PATH
-#VOLUME [ "/home" ]
-COPY jupyterhub_config.py jupyterhub_config.py
-#ENTRYPOINT [ "entrypoint.sh" ]
-
-#COPY $NOTEBOOKS_FROM /home$NOTEBOOKS_FROM
-ARG USER=admin
-ARG PASSWORD=admin
+# install dependences
 RUN pip install notebook
 
-RUN useradd ${USER} -p $(openssl passwd ${PASSWORD}) -m
-VOLUME /home
-EXPOSE 8000
-CMD ["jupyterhub"]
 
+# add user admin-admin
+ARG USER=admin
+ARG PASSWD=admin
+
+RUN useradd -m ${USER} -p $(openssl passwd ${PASSWD})
+
+COPY entrypoint.sh /entrypoint.sh
+
+# mount home
+VOLUME /home
+
+# copy Jupyter Notebook from NOTEBOOKS_FROM to HUB_PATH
+ENTRYPOINT [ "/entrypoint.sh" ]
 
 

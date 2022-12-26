@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  jupyterhub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USER: admin
+        PASSWD: admin
+    image: jupyterhub:sgwps
+    ports:
+      - "8000:8000"
+    volumes:
+      - "/home:/home"
+      - "/test:/notebooks"
+    command: ["/notebooks", "/home/admin/ipynbs"]
