@@ -3,7 +3,8 @@ FROM jupyterhub/jupyterhub
 
 # install dependences
 RUN pip install notebook
-
+ARG NOTEBOOKS_FROM=/home/shared
+ARG HUB_PATH=/hub
 
 # add user admin-admin
 ARG USER=admin
@@ -17,6 +18,4 @@ COPY entrypoint.sh /entrypoint.sh
 VOLUME /home
 
 # copy Jupyter Notebook from NOTEBOOKS_FROM to HUB_PATH
-ENTRYPOINT [ "/entrypoint.sh" ]
-
-
+CMD [ "sh", "/entrypoint.sh", "$NOTEBOOKS_FROM", "$HUB_PATH" ]
