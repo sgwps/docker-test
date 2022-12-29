@@ -3,8 +3,8 @@ FROM jupyterhub/jupyterhub
 
 # install dependences
 RUN pip install notebook
-ARG NOTEBOOKS_FROM=/home/shared
-ARG HUB_PATH=/hub
+ARG NOTEBOOKS_FROM=/notebooks
+ARG HUB_PATH=/nome/admin/ipynbc
 
 # add user admin-admin
 ARG USER=admin
