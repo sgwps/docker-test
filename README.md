@@ -4,9 +4,9 @@
 - Запустить следущие команды
 ```bash
 git clone https://github.com/sgwps/docker-test
+start.sh
 ```
-```bash start.sh
-```
+
 - JupiterHub будет доступен по адресу http://localhost:80
 - Данные для первого входа: логин - admin, пароль - admin
 ## Структура лабораторной работы
