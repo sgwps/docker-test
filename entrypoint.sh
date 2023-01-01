@@ -8,9 +8,6 @@ if [ "$#" -gt 0 ]; then
     HUB_PATH='/srv/jupyterhub'
   fi
   cp -rv $NOTEBOOKS_FROM/* $HUB_PATH
-else
-  cd $HUB_PATH
-  mkdir $NOTEBOOKS_FROM
 fi
 
 jupyterhub
