@@ -4,6 +4,7 @@
 - Запустить следущие команды
 ```bash
 git clone https://github.com/sgwps/docker-test
+cd docker-test
 bash start.sh
 ```
 
